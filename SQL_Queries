@@ -1,0 +1,40 @@
+1. Which game genres have the highest global sales?
+              SELECT
+              genre,
+              SUM(global_sales) AS total_global_sales
+          FROM
+              video_game_sales
+          GROUP BY
+              genre
+          ORDER BY
+              total_global_sales DESC;
+2.How do sales for top genres compare across North America, Europe, and Japan?
+               SELECT
+                genre,
+                SUM(na_sales) AS north_america_sales,
+                SUM(eu_sales) AS europe_sales,
+                SUM(jp_sales) AS japan_sales
+            FROM
+                video_game_sales
+            WHERE
+                genre IN ('Action', 'Sports', 'Shooter', 'Role-Playing')
+            GROUP BY
+                genre
+            ORDER BY
+                genre;
+3.What are the top 5 best-selling video games of all time?
+                  SELECT
+                    name,
+                    platform,
+                    publisher,
+                    global_sales
+                  FROM
+                    video_game_sales
+                  ORDER BY
+                    global_sales DESC
+                  LIMIT 5;
+4. Top 10 consoles sold
+                select platform, 
+                sum(global_sales) from video_game_sales_20250724093443 group by platform 
+                order by sum(global_sales) desc     
+                limit 10;
